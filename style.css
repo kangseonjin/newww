@@ -208,13 +208,14 @@ ul, ol { list-style: none; }
 
     .main-title { font-size: 60px; }
     
-    /* ✨ Works 리스트: 12칸 그리드를 2칸으로 강제 축소하여 완벽한 2단 구현 */
+ .works-filter-group { 
+        margin-bottom: 30px; 
+    }
     .works-grid-list { 
         grid-template-columns: repeat(2, 1fr); 
-        gap: 16px; /* 폰에서는 간격을 조금 더 조여줌 */
+        gap: 16px; 
     }
     .works-item { grid-column: span 1; margin-bottom: 30px; }
-    
     .detail-text-area { grid-column: span 4; position: static; margin-bottom: 40px; }
     .detail-image-area { grid-column: span 4; }
     

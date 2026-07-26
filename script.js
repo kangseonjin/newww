@@ -294,7 +294,10 @@ function navigateToPage(pageName) {
     if (pageName === 'detail' || pageName === 'works') {
         document.getElementById('link-works').classList.add('active');
     }
-
+if (pageName === 'archive') {
+        archiveIndex = 0;
+        updateArchiveView();
+    }
     // 모바일에서 링크를 클릭하면 열려있던 메뉴 닫고 버튼도 ☰로 복구
     const navMenu = document.getElementById('nav-menu');
     const hamburgerBtn = document.querySelector('.hamburger-btn');
