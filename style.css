@@ -167,42 +167,75 @@ ul, ol { list-style: none; }
         grid-template-columns: repeat(4, 1fr); 
         padding-left: 20px;
         padding-right: 20px;
+        padding-bottom: 60px; /* 모바일 하단 여백 축소 */
     }
     .nav-wrapper {
         padding-left: 20px;
         padding-right: 20px;
     }
 
+    /* 네비게이션 로고 폰트 축소 및 1줄 강제 고정 */
+    .nav-logo {
+        font-size: 24px; 
+        white-space: nowrap; 
+    }
+
     /* 햄버거 메뉴 버튼 보이기 */
-    .hamburger-btn { display: block; }
+    .hamburger-btn { display: block; z-index: 1001; } /* 메뉴 위로 올라오게 z-index 추가 */
     
     /* 네비게이션 메뉴 모바일 전체화면 설정 */
     .nav-menu { 
         display: none; 
         position: fixed; 
-        top: 90px; 
+        top: 0; /* 화면 끝까지 덮도록 수정 */
         left: 0; 
         width: 100%; 
-        height: calc(100vh - 90px); 
+        height: 100vh; 
         background: rgba(255, 255, 255, 0.98); 
         flex-direction: column; 
-        justify-content: flex-start;
+        justify-content: center; /* 중앙 정렬로 변경 */
         align-items: center; 
-        padding-top: 60px;
         gap: 40px; 
+        z-index: 1000;
     }
-    .nav-menu.active { display: flex; } /* 버튼 누르면 나타남 */
+    .nav-menu.active { display: flex; } 
     .nav-link { font-size: 24px; }
     .archive-dropdown-list { position: relative; top: 10px; box-shadow: none; border: none; background: transparent; }
 
     .main-title { font-size: 60px; }
     
-    /* ✨ 폰 화면에서 작품을 2단(2열)으로 변경 (span 4 -> span 2) */
-    .works-item { grid-column: span 2; }
+    /* ✨ Works 리스트: 12칸 그리드를 2칸으로 강제 축소하여 완벽한 2단 구현 */
+    .works-grid-list { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 16px; /* 폰에서는 간격을 조금 더 조여줌 */
+    }
+    .works-item { grid-column: span 1; margin-bottom: 30px; }
     
-    /* 기타 1단으로 떨어져야 할 요소들 */
     .detail-text-area { grid-column: span 4; position: static; margin-bottom: 40px; }
     .detail-image-area { grid-column: span 4; }
+    
+    /* ✨ Archive: 스크롤 없이 한눈에 꽉 차게 압축 */
     .archive-visual-area { grid-column: span 4; }
-    .archive-text-area { grid-column: span 4; padding-top: 40px; }
+    .archive-year-display { font-size: 28px; margin-bottom: 15px; } /* 크기/여백 축소 */
+    
+    /* 포스터 높이 제한을 걸어 화면 밖으로 벗어나지 않게 제어 */
+    .archive-poster { 
+        max-height: 45vh; 
+        width: auto; 
+        margin: 0 auto; 
+        aspect-ratio: auto; 
+        background-color: transparent; 
+    }
+    .archive-poster img { 
+        width: auto; 
+        height: 100%; 
+        max-height: 45vh; 
+        object-fit: contain; /* 찌그러지지 않고 비율 유지 */
+    }
+
+    .archive-controls { margin-top: 15px; }
+    
+    .archive-text-area { grid-column: span 4; padding-top: 20px; } /* 여백 대폭 축소 */
+    .archive-title { font-size: 20px; margin-bottom: 10px; }
+    .archive-desc { font-size: 14px; }
 }
