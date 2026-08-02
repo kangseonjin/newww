@@ -119,9 +119,9 @@ function renderWorksGrid(data) {
         workItem.className = 'works-item';
         workItem.onclick = () => showWorkDetail(work.id);
         
-        workItem.innerHTML = `
+   workItem.innerHTML = `
             <figure class="works-thumb">
-                4 Columns<br>384px x 384px<br>(${work.thumbFile})
+                3 Columns<br>282px x 282px<br>(${work.thumbFile})
             </figure>
             <article class="works-meta">
                 <h3 class="works-title">${work.title}</h3>
@@ -175,9 +175,9 @@ function initArchivePagination() {
         liYear.innerText = data.year;
         liYear.onclick = (e) => { 
             e.stopPropagation(); 
-            archiveIndex = index; 
-            updateArchiveView(); 
             navigateToPage('archive'); 
+            archiveIndex = index;      
+            updateArchiveView();       
         };
         dropdown.appendChild(liYear);
 
@@ -266,6 +266,10 @@ function toggleMobileMenu() {
     } else {
         hamburgerBtn.innerText = '☰';
         document.body.style.overflow = 'auto'; // 스크롤 복구
+    const archiveDropdown = document.getElementById('archive-dropdown-list');
+        const linkArchive = document.getElementById('link-archive');
+        if (archiveDropdown) archiveDropdown.classList.remove('open');
+        if (linkArchive) linkArchive.classList.remove('open');
     }
 }
 
@@ -310,6 +314,8 @@ if (pageName === 'archive') {
 
     window.scrollTo(0, 0);
 }
+
+
 
 /* -----------------------------------------------------------
    초기화 (Init)
